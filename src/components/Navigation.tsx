@@ -29,7 +29,7 @@ const Navigation = () => {
               to="/"
               className="text-xl font-bold text-navy bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
             >
-              Michael Githiji
+              Michael Githinji
             </Link>
           </div>
 

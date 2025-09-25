@@ -10,10 +10,10 @@ const Footer = () => {
           <div className="flex items-center space-x-2 text-sm">
             <span>Made with</span>
             <Heart className="h-4 w-4 text-accent fill-current animate-pulse" />
-            <span>by Michael Githiji</span>
+            <span>by Michael Githinji</span>
           </div>
           <div className="text-sm opacity-80">
-            © {currentYear} Michael Githiji. All rights reserved.
+            © {currentYear} Michael Githinji. All rights reserved.
           </div>
         </div>
       </div>

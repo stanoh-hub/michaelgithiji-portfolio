@@ -34,7 +34,7 @@ const Home = () => {
               <h1 className="text-4xl lg:text-6xl font-bold text-navy mb-6">
                 Hi, I'm{" "}
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  Michael Githiji
+                  Michael Githinji
                 </span>
               </h1>
               <p className="text-xl lg:text-2xl text-navy-light mb-8 leading-relaxed">

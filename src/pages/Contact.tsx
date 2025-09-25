@@ -62,7 +62,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "Kenya",
+      value: "Mombasa,Kenya",
       href: "#",
     },
   ];

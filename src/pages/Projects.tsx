@@ -1,7 +1,10 @@
 import { ExternalLink, Github, Calendar, Tag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+
 
 const Projects = () => {
   const projects = [
@@ -173,9 +176,16 @@ const Projects = () => {
                 I'm always excited to work on new projects and explore innovative solutions. 
                 Let's discuss how we can work together!
               </p>
-              <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90 hover:scale-105 transition-all duration-300">
+              <Link to="/contact">
+               <Button 
+                size="lg" 
+                variant="secondary"
+                className="bg-white text-primary hover:bg-white/90 hover:scale-105 transition-all duration-300"
+                 >
                 Get In Touch
-              </Button>
+                <ArrowRight className="ml-2 h-4 w-4" />
+               </Button>
+            </Link>
             </CardContent>
           </Card>
         </div>

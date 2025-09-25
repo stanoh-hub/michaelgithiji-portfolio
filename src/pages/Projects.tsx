@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Data Analysis Dashboard",
-      description: "Interactive web dashboard for visualizing and analyzing large datasets using Python, R, and modern web technologies. Features real-time data updates and customizable visualization options.",
+      description:
+        "Interactive web dashboard for visualizing and analyzing large datasets using Python, R, and modern web technologies. Features real-time data updates and customizable visualization options.",
       technologies: ["Python", "R", "React", "D3.js", "PostgreSQL"],
       category: "Data Science",
       status: "Completed",
@@ -16,7 +17,8 @@ const Projects = () => {
     },
     {
       title: "Machine Learning Classifier",
-      description: "Developed a multi-class classification model to predict student performance based on various academic and demographic factors. Achieved 92% accuracy using ensemble methods.",
+      description:
+        "Developed a multi-class classification model to predict student performance based on various academic and demographic factors. Achieved 92% accuracy using ensemble methods.",
       technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
       category: "Machine Learning",
       status: "Completed",
@@ -25,7 +27,8 @@ const Projects = () => {
     },
     {
       title: "Algorithm Optimization Research",
-      description: "Research project investigating computational complexity and optimization techniques for sorting algorithms. Published findings in university research journal.",
+      description:
+        "Research project investigating computational complexity and optimization techniques for sorting algorithms. Published findings in university research journal.",
       technologies: ["Java", "Python", "LaTeX", "Research"],
       category: "Research",
       status: "Published",
@@ -34,7 +37,8 @@ const Projects = () => {
     },
     {
       title: "Statistical Analysis Tool",
-      description: "Command-line tool for performing statistical analysis on datasets. Includes hypothesis testing, correlation analysis, and regression modeling capabilities.",
+      description:
+        "Command-line tool for performing statistical analysis on datasets. Includes hypothesis testing, correlation analysis, and regression modeling capabilities.",
       technologies: ["R", "Python", "Statistics"],
       category: "Statistics",
       status: "In Progress",
@@ -43,7 +47,8 @@ const Projects = () => {
     },
     {
       title: "Database Management System",
-      description: "Designed and implemented a relational database system for a hypothetical library management system with advanced querying capabilities.",
+      description:
+        "Designed and implemented a relational database system for a hypothetical library management system with advanced querying capabilities.",
       technologies: ["SQL", "PostgreSQL", "Python", "Flask"],
       category: "Database",
       status: "Completed",
@@ -52,7 +57,8 @@ const Projects = () => {
     },
     {
       title: "Mathematical Modeling Project",
-      description: "Applied mathematical modeling techniques to solve real-world optimization problems in supply chain management. Used linear programming and simulation methods.",
+      description:
+        "Applied mathematical modeling techniques to solve real-world optimization problems in supply chain management. Used linear programming and simulation methods.",
       technologies: ["MATLAB", "Python", "Optimization", "Modeling"],
       category: "Mathematics",
       status: "Completed",
@@ -61,20 +67,44 @@ const Projects = () => {
     },
   ];
 
-  const featuredProjects = projects.filter(project => project.featured);
-  const otherProjects = projects.filter(project => !project.featured);
+  const featuredProjects = projects.filter((project) => project.featured);
+  const otherProjects = projects.filter((project) => !project.featured);
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Completed": return "bg-green-100 text-green-800";
-      case "In Progress": return "bg-yellow-100 text-yellow-800";
-      case "Published": return "bg-blue-100 text-blue-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "Completed":
+        return "bg-green-100 text-green-800";
+      case "In Progress":
+        return "bg-yellow-100 text-yellow-800";
+      case "Published":
+        return "bg-blue-100 text-blue-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
-  const ProjectCard = ({ project, featured = false }: { project: any; featured?: boolean }) => (
-    <Card className={`bg-gradient-card border-0 shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 group ${featured ? 'lg:col-span-2' : ''}`}>
+  // ✅ Fixed Project type to include all used fields
+  type Project = {
+    title: string;
+    description: string;
+    technologies: string[];
+    category: string;
+    status: string;
+    date: string; // could be Date if you want
+    featured: boolean;
+  };
+
+  type ProjectCardProps = {
+    project: Project;
+    featured?: boolean;
+  };
+
+  const ProjectCard = ({ project, featured = false }: ProjectCardProps) => (
+    <Card
+      className={`bg-gradient-card border-0 shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 group ${
+        featured ? "lg:col-span-2" : ""
+      }`}
+    >
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -96,18 +126,19 @@ const Projects = () => {
           </div>
         </div>
       </CardHeader>
+
       <CardContent>
         <p className="text-muted-foreground mb-6 leading-relaxed">
           {project.description}
         </p>
-        
+
         <div className="mb-6">
           <div className="flex items-center mb-3">
             <Tag className="h-4 w-4 text-primary mr-2" />
             <span className="text-sm font-medium text-navy">Technologies</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech: string, index: number) => (
+            {project.technologies.map((tech, index) => (
               <Badge key={index} variant="secondary" className="text-xs">
                 {tech}
               </Badge>
@@ -116,11 +147,18 @@ const Projects = () => {
         </div>
 
         <div className="flex space-x-3">
-          <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group/btn">
+          <Button
+            size="sm"
+            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group/btn"
+          >
             <Github className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
             View Code
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-primary/10 hover:border-primary transition-all duration-300 group/btn">
+          <Button
+            size="sm"
+            variant="outline"
+            className="hover:bg-primary/10 hover:border-primary transition-all duration-300 group/btn"
+          >
             <ExternalLink className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
             Live Demo
           </Button>
@@ -135,10 +173,14 @@ const Projects = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-            My <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
+            My{" "}
+            <span className="bg-gradient-primary bg-clip-text text-transparent">
+              Projects
+            </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            A showcase of academic, personal, and collaborative projects that demonstrate my skills and passion for technology
+            A showcase of academic, personal, and collaborative projects that
+            demonstrate my skills and passion for technology
           </p>
         </div>
 
@@ -170,10 +212,14 @@ const Projects = () => {
                 Interested in Collaboration?
               </h3>
               <p className="text-primary-foreground/90 mb-6 leading-relaxed">
-                I'm always excited to work on new projects and explore innovative solutions. 
-                Let's discuss how we can work together!
+                I'm always excited to work on new projects and explore innovative
+                solutions. Let's discuss how we can work together!
               </p>
-              <Button variant="secondary" size="lg" className="bg-white text-primary hover:bg-white/90 hover:scale-105 transition-all duration-300">
+              <Button
+                variant="secondary"
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 hover:scale-105 transition-all duration-300"
+              >
                 Get In Touch
               </Button>
             </CardContent>
